@@ -1,6 +1,7 @@
 /*global playerInfo, GetPlanetName, GetItemName */
 
 import React, { Component } from "react";
+import styled from "styled-components";
 import { exportToGS } from "./external/googleSheets";
 
 function getItemType(name) {
@@ -58,8 +59,8 @@ function getItemType(name) {
   return exportItems[name] || "00_Hull/Module";
 }
 
-class App extends Component {
-  depotAssets = () => {
+function App() {
+  function depotAssets() {
     var assets = [];
     var warehouses = playerInfo.playerArmy.warehouse.getByPid;
     warehouses.forEach((depot, index) => {
@@ -73,25 +74,41 @@ class App extends Component {
       });
     });
     return assets;
-  };
+  }
 
-  exportLegionAssets = () => {
+  function exportLegionAssets() {
     const sheet = {
       name: "LegionAssets",
       headers: ["Planet", "Type", "Item", "Amount"],
-      rows: this.depotAssets()
+      rows: depotAssets()
     };
 
     exportToGS([sheet]);
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <button onClick={this.exportLegionAssets}>LA</button>
-      </div>
-    );
   }
+
+  const Wrapper = styled.div`
+    position: absolute;
+    left: 25%;
+  `;
+
+  const Button = styled.button`
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 8px;
+    margin: 1px 1px;
+    cursor: pointer;
+    border-radius: 8px;
+  `;
+  return (
+    <Wrapper>
+      <Button onClick={exportLegionAssets}>LA</Button>
+    </Wrapper>
+  );
 }
 
 export default App;
