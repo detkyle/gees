@@ -1,4 +1,3 @@
-
 // ==UserScript==
 // @name     GalacticEra Enhancement Suite
 // @version  0.1.0

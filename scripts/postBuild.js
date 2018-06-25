@@ -6,7 +6,7 @@ async function foo() {
   const mainPath = "./build/" + manifest["main.js"];
   const jsCode = await fs.readFile(mainPath);
   const fileContents = getUserScriptContent(jsCode, package);
-  const geesPath = "./install/gees.js";
+  const geesPath = "./install/gees.user.js";
 
   await fs.ensureFile(geesPath);
 
@@ -22,8 +22,7 @@ async function foo() {
 foo();
 
 function getUserScriptContent(jsAppCode, package) {
-  return `
-// ==UserScript==
+  return `// ==UserScript==
 // @name     ${package.description}
 // @version  ${package.version}
 // @homepage ${package.homepage}
