@@ -1,6 +1,11 @@
 /*global $, GM_getValue*/
 export function exportToGS(sheets) {
   let gsUrl = GM_getValue("googleSheetsExecUrl");
+  if (!gsUrl || gsUrl.length === 0) {
+    alert("Need to set googleSheetsExecUrl to be able to export");
+    return;
+  }
+
   $.ajax({
     type: "POST",
     url: gsUrl,
