@@ -24,7 +24,7 @@ function ExportLegionAssets() {
 
   function exportLegionAssets() {
     const sheet = {
-      name: "LegionAssets",
+      name: "LegionAssets_Raw",
       headers: ["Planet", "Type", "Item", "Amount"],
       rows: depotAssets()
     };

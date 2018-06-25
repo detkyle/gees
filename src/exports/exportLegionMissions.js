@@ -21,7 +21,7 @@ function ExportLegionMissions() {
 
   function exportLegionMission() {
     const sheet = {
-      name: "LegionMissions",
+      name: "LegionMissions_Raw",
       headers: [
         "System",
         "Type",
