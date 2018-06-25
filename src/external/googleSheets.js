@@ -1,9 +1,9 @@
-/*global $*/
+/*global $, GM_getValue*/
 export function exportToGS(sheets) {
+  let gsUrl = GM_getValue("googleSheetsExecUrl");
   $.ajax({
     type: "POST",
-    url:
-      "https://script.google.com/macros/s/AKfycbyWIg-tDU7BWP51xGk9hraSnDjoUEjNnR11qlm9LwVr20zCgzME/exec",
+    url: gsUrl,
     headers: {
       "Content-Type": "text/plain;charset=utf-8"
     },
