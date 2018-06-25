@@ -12,6 +12,7 @@ const ExportButton = styled.button`
   margin: 1px 1px;
   cursor: pointer;
   border-radius: 8px;
+  font-weight: bold;
 `;
 
 export default ExportButton;

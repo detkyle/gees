@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import ExportLegionAssets from "./exports/exportLegionAssets";
+import ExportLegionMissions from "./exports/exportLegionMissions";
 
 function App() {
   const Wrapper = styled.div`
@@ -13,6 +14,7 @@ function App() {
   return (
     <Wrapper>
       <ExportLegionAssets />
+      <ExportLegionMissions />
     </Wrapper>
   );
 }
