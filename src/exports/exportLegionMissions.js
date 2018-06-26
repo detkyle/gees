@@ -1,6 +1,6 @@
 /*global playerInfo, GetPlanetName, GetItemName */
 
-import React, { Component } from "react";
+import React from "react";
 import { exportToGS } from "../external/googleSheets";
 import ExportButton from "../common/exportButton";
 
