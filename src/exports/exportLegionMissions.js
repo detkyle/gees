@@ -38,7 +38,7 @@ function ExportLegionMissions() {
     exportToGS([sheet]);
   }
 
-  return <ExportButton onClick={exportLegionMission}>LM</ExportButton>;
+  return <ExportButton onClick={exportLegionMission}>M</ExportButton>;
 }
 
 export default ExportLegionMissions;
