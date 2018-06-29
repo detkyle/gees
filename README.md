@@ -27,6 +27,10 @@ Galactic Era Enhancement Suite
 
 ## Relese Notes
 
+**2018-06-25 v0.2.0**
+
+- Fetch all depot assets before exporting to GS
+
 **2018-06-24 v0.1.0**
 
 - Initial version
