@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import ExportLegionAssets from "./exports/exportLegionAssets";
-import ExportLegionMissions from "./exports/exportLegionMissions";
+import ExportLegionAssets from "./actions/exportLegionAssets";
+import ExportLegionMissions from "./actions/exportLegionMissions";
+import FindIdlePlanets from "./actions/findIdlePlanets";
 
 function App() {
   const Wrapper = styled.div`
@@ -13,6 +14,7 @@ function App() {
     <Wrapper>
       <ExportLegionAssets />
       <ExportLegionMissions />
+      <FindIdlePlanets />
     </Wrapper>
   );
 }
