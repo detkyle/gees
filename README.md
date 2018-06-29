@@ -27,6 +27,12 @@ Galactic Era Enhancement Suite
 
 ## Relese Notes
 
+**2018-06-29 v0.3.0**
+
+- Added idle planet detector
+- Buttons now turn yellow when fetching or sending data
+- Buttons only displayed after user is logged in
+
 **2018-06-25 v0.2.0**
 
 - Fetch all depot assets before exporting to GS
