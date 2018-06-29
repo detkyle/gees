@@ -1,13 +1,23 @@
 /*global playerInfo, GetPlanetName, GetItemName */
 
-import React from "react";
+import React, { Component } from "react";
 import { exportToGS } from "../external/googleSheets";
 import GetItemType from "../common/getItemType";
 import Button from "../common/button";
 import { populatePlanetData } from "../common/populatePlanetData";
 
-function ExportLegionAssets() {
-  function getDepotAssets() {
+class ExportLegionAssets extends Component {
+  constructor() {
+    super();
+    this.state = {
+      color: "green"
+    };
+    this.getDepotAssets = this.getDepotAssets.bind(this);
+    this.exportLegionAssets = this.exportLegionAssets.bind(this);
+    this.onExportClick = this.onExportClick.bind(this);
+  }
+
+  getDepotAssets() {
     var assets = [];
     var warehouses = playerInfo.playerArmy.warehouse.getByPid;
     warehouses.forEach((depot, index) => {
@@ -23,25 +33,32 @@ function ExportLegionAssets() {
     return assets;
   }
 
-  function exportLegionAssets() {
+  exportLegionAssets() {
     const sheet = {
       name: "LegionAssets_Raw",
       headers: ["Planet", "Type", "Item", "Amount"],
-      rows: getDepotAssets()
+      rows: this.getDepotAssets()
     };
 
-    exportToGS([sheet]);
+    exportToGS([sheet], () => this.setState({ color: "green" }));
   }
 
-  function onExportClick() {
-    populatePlanetData(exportLegionAssets);
+  onExportClick() {
+    this.setState({ color: "yellow" });
+    populatePlanetData(this.exportLegionAssets);
   }
 
-  return (
-    <Button color="green" title="Export Legion Assets" onClick={onExportClick}>
-      A
-    </Button>
-  );
+  render() {
+    return (
+      <Button
+        color={this.state.color}
+        title="Export Legion Assets"
+        onClick={this.onExportClick}
+      >
+        A
+      </Button>
+    );
+  }
 }
 
 export default ExportLegionAssets;
