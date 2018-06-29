@@ -18,22 +18,10 @@ class FindIdlePlanets extends Component {
     this.getIdlePlanets = this.getIdlePlanets.bind(this);
     this.updateButtonLabel = this.updateButtonLabel.bind(this);
     this.startIdlePlanetDetection = this.startIdlePlanetDetection.bind(this);
-    this.delayUntilLoggedIn = this.delayUntilLoggedIn.bind(this);
   }
 
   componentDidMount() {
-    this.delayUntilLoggedIn(() => this.startIdlePlanetDetection());
-  }
-
-  delayUntilLoggedIn(action) {
-    if (typeof playerInfo === "undefined") {
-      setTimeout(() => {
-        this.delayUntilLoggedIn(action);
-      }, 1000);
-    } else {
-      console.log("player has logged in, firing off action");
-      action();
-    }
+    this.startIdlePlanetDetection();
   }
 
   getIdlePlanets() {
