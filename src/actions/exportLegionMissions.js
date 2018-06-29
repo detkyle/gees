@@ -2,7 +2,7 @@
 
 import React from "react";
 import { exportToGS } from "../external/googleSheets";
-import ExportButton from "../common/exportButton";
+import Button from "../common/button";
 
 function ExportLegionMissions() {
   function getLegionMissions() {
@@ -38,7 +38,15 @@ function ExportLegionMissions() {
     exportToGS([sheet]);
   }
 
-  return <ExportButton onClick={exportLegionMission}>M</ExportButton>;
+  return (
+    <Button
+      color="green"
+      title="Export Legion Missions"
+      onClick={exportLegionMission}
+    >
+      M
+    </Button>
+  );
 }
 
 export default ExportLegionMissions;

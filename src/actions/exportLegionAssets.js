@@ -3,7 +3,7 @@
 import React from "react";
 import { exportToGS } from "../external/googleSheets";
 import GetItemType from "../common/getItemType";
-import ExportButton from "../common/exportButton";
+import Button from "../common/button";
 import { populatePlanetData } from "../common/populatePlanetData";
 
 function ExportLegionAssets() {
@@ -37,7 +37,11 @@ function ExportLegionAssets() {
     populatePlanetData(exportLegionAssets);
   }
 
-  return <ExportButton onClick={onExportClick}>A</ExportButton>;
+  return (
+    <Button color="green" title="Export Legion Assets" onClick={onExportClick}>
+      A
+    </Button>
+  );
 }
 
 export default ExportLegionAssets;
