@@ -24,3 +24,11 @@ Galactic Era Enhancement Suite
 - Copy the updated contents of `./install/gees.user.js`
 - Create a new local script in TamperMonkey or ViolentMonkey
 - Paste the updated code, save, and refresh page
+
+## Relese Notes
+
+**2018-06-24 v0.1.0**
+
+- Initial version
+- Added export legion missions button
+- Added export legion assets button
