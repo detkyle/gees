@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     GalacticEra Enhancement Suite
-// @version  0.4.0
+// @version  0.4.1
 // @homepage https://github.com/jarekb84/gees
 // @include  https://aall.space/*
 // @grant    GM_addStyle
