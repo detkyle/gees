@@ -37,6 +37,10 @@ Galactic Era Enhancement Suite
 
 ## Relese Notes
 
+**2018-07-01 v0.4.1**
+
+- Fixed incorrectly flagging planet as idle
+
 **2018-07-01 v0.4.0**
 
 - Fixed issue with incorrectly flagged idle planets

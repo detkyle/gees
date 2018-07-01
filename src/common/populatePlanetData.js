@@ -4,7 +4,9 @@ import _ from "lodash";
 
 function fetchPlanetData(planetsToProcess, doneFetching) {
   if (planetsToProcess.length === 0) {
-    doneFetching();
+    setTimeout(() => {
+      doneFetching();
+    }, 1000);
     return;
   }
 
@@ -12,7 +14,7 @@ function fetchPlanetData(planetsToProcess, doneFetching) {
   setTimeout(() => {
     console.log(`Fetching: ${planetId}`);
     GetUnionPlanetInfo(
-      {},
+      1,
       fetchPlanetData(planetsToProcess, doneFetching),
       planetId
     );
