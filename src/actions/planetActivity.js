@@ -6,7 +6,7 @@ import { populatePlanetData } from "../common/populatePlanetData";
 import _ from "lodash";
 import moment from "moment";
 
-class FindIdlePlanets extends Component {
+class PlanetActivity extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,12 +15,14 @@ class FindIdlePlanets extends Component {
       color: "green"
     };
 
-    this.updateButtonLabel = this.updateButtonLabel.bind(this);
-    this.startIdlePlanetDetection = this.startIdlePlanetDetection.bind(this);
+    this.updateButton = this.updateButton.bind(this);
+    this.startPlanetActivityDetection = this.startPlanetActivityDetection.bind(
+      this
+    );
   }
 
   componentDidMount() {
-    this.startIdlePlanetDetection();
+    this.startPlanetActivityDetection();
   }
 
   getPlanets() {
@@ -67,21 +69,21 @@ class FindIdlePlanets extends Component {
     };
   }
 
-  getPrintout(groups) {
+  getPrintout(days) {
     let result = "";
 
-    for (var day in groups) {
+    for (var day in days) {
       result += `  ${day}\n`;
 
-      groups[day].forEach(task => {
-        result += `    ${task.time} ${task.name}\n`;
+      days[day].forEach(planet => {
+        result += `    ${planet.time} ${planet.name}\n`;
       });
     }
 
     return result;
   }
 
-  updateButtonLabel() {
+  updateButton() {
     const planets = this.getPlanets();
     const { idle, busy } = this.groupAndSort(planets);
     let color = "green";
@@ -101,16 +103,16 @@ class FindIdlePlanets extends Component {
     });
   }
 
-  startIdlePlanetDetection() {
+  startPlanetActivityDetection() {
     this.setState({ color: "yellow" });
-    populatePlanetData(this.updateButtonLabel);
+    populatePlanetData(this.updateButton);
   }
 
   render() {
     return (
       <Button
         color={this.state.color}
-        onClick={this.startIdlePlanetDetection}
+        onClick={this.startPlanetActivityDetection}
         title={this.state.title}
       >
         {this.state.label}
@@ -119,4 +121,4 @@ class FindIdlePlanets extends Component {
   }
 }
 
-export default FindIdlePlanets;
+export default PlanetActivity;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import ExportLegionAssets from "./actions/exportLegionAssets";
 import ExportLegionMissions from "./actions/exportLegionMissions";
-import FindIdlePlanets from "./actions/findIdlePlanets";
+import PlanetActivity from "./actions/planetActivity";
 
 class App extends Component {
   constructor() {
@@ -48,7 +48,7 @@ class App extends Component {
       <Wrapper>
         <ExportLegionAssets />
         <ExportLegionMissions />
-        <FindIdlePlanets />
+        <PlanetActivity />
       </Wrapper>
     );
   }
