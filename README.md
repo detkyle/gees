@@ -14,18 +14,34 @@ Galactic Era Enhancement Suite
 
 ## Development
 
+### Setup
+
 - Install [node.js](https://nodejs.org/en) and [yarn](https://yarnpkg.com/en/)
 - Clone this repo and cd into it
 - Run `yarn install`
-- You can run `yarn start` to setup a local dev server
-  - This will run the app, but will only partially work since it's missing game assets the script depends on
-  - Mainly use this to verify your code complies without errors
-- Make any changes you want and run `yarn build-gees`
-- Copy the updated contents of `./install/gees.user.js`
-- Create a new local script in TamperMonkey or ViolentMonkey
-- Paste the updated code, save, and refresh page
+
+### Dev
+
+- Run `set HTTPS=true&&yarn start`
+  - sets up a local dev server
+  - runs under https to allow fetching of local js bundle and loading it into aall.space
+- Go to your browser of choice and run the script from /scripts/localDev.js in the console
+  - this will emebed the local js file into the game and let you debug using dev tools
+- Each time you make a change to the js code, rerun the above scrip in console
+
+### Publishing release
+
+- Update package.json and README.md
+- Run `yarn build-gees`
+- Commit and push to github
 
 ## Relese Notes
+
+**2018-07-01 v0.4.0**
+
+- Fixed issue with incorrectly flagged idle planets
+- Added info on when all planets will go idle
+- Added improved development workflow notes to readme
 
 **2018-06-29 v0.3.0**
 
