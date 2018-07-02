@@ -37,6 +37,13 @@ Galactic Era Enhancement Suite
 
 ## Relese Notes
 
+**2018-07-01 v0.4.2**
+
+- Still seeing issues with idle flagging
+  - added delay before asking for data
+  - now accounts for tasks that have just completed
+  - added more console output to help debug
+
 **2018-07-01 v0.4.1**
 
 - Fixed incorrectly flagging planet as idle

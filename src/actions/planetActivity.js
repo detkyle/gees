@@ -22,7 +22,9 @@ class PlanetActivity extends Component {
   }
 
   componentDidMount() {
-    this.startPlanetActivityDetection();
+    setTimeout(() => {
+      this.startPlanetActivityDetection();
+    }, 5000);
   }
 
   getPlanets() {
@@ -36,6 +38,8 @@ class PlanetActivity extends Component {
       service => service && service.type !== "army_build"
     );
 
+    console.log(planetsWithRunningTasks);
+
     planetsWithRunningTasks.forEach(task => {
       const secondsTillEnd = task.endTime - gameTime;
       const ending = moment().add(secondsTillEnd, "seconds");
@@ -43,6 +47,7 @@ class PlanetActivity extends Component {
       allPlanets[task.planet].ending = ending;
       allPlanets[task.planet].day = ending.format("ddd");
       allPlanets[task.planet].time = ending.format("HH:mm");
+      allPlanets[task.planet].taskInPast = secondsTillEnd <= 0;
     });
 
     return allPlanets;
@@ -52,8 +57,10 @@ class PlanetActivity extends Component {
     let idle = [];
     let busy = [];
     for (var id in planets) {
-      let planet = planets[id];
-      if (typeof planet.ending === "undefined") {
+      const planet = planets[id];
+      const noTask = typeof planet.ending === "undefined";
+
+      if (noTask || planet.taskInPast) {
         idle.push(planet.name);
       } else {
         busy.push(planet);
