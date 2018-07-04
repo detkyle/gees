@@ -1,4 +1,4 @@
-/*global playerInfo, GetPlanetName, gameTime */
+/*global playerInfo, GetPlanetName, gameTime, GetLanguage, getTable */
 
 import React, { Component } from "react";
 import Button from "../common/button";
@@ -34,13 +34,18 @@ class PlanetActivity extends Component {
       return result;
     }, {});
 
-    const planetsWithRunningTasks = legion.services.getById.filter(
+    const tasks = legion.services.getById.filter(
       service => service && service.type !== "army_build"
     );
 
-    console.log(planetsWithRunningTasks);
+    console.log(
+      `GameTime: ${gameTime}`,
+      tasks.map(p => {
+        return { name: GetPlanetName(p.planet), ...p };
+      })
+    );
 
-    planetsWithRunningTasks.forEach(task => {
+    tasks.forEach(task => {
       const secondsTillEnd = task.endTime - gameTime;
       const ending = moment().add(secondsTillEnd, "seconds");
 
@@ -48,9 +53,18 @@ class PlanetActivity extends Component {
       allPlanets[task.planet].day = ending.format("ddd");
       allPlanets[task.planet].time = ending.format("HH:mm");
       allPlanets[task.planet].taskInPast = secondsTillEnd <= 0;
+      allPlanets[task.planet].task = getTaskName(task);
+      allPlanets[task.planet].amount = task.amount.toLocaleString();
     });
 
     return allPlanets;
+
+    function getTaskName(task) {
+      const table = getTable(task.objectType);
+      const nameId = table.getById[task.objectId][1];
+
+      return GetLanguage(nameId);
+    }
   }
 
   groupAndSort(planets) {
@@ -82,11 +96,12 @@ class PlanetActivity extends Component {
     for (var day in days) {
       result += `  ${day}\n`;
 
-      days[day].forEach(planet => {
-        result += `    ${planet.time} ${planet.name}\n`;
+      days[day].forEach(({ time, name, task, amount }) => {
+        result += `    ${time}   ${name}${" ".repeat(
+          (10 - name.length) * 2
+        )} ${task} x ${amount}\n`;
       });
     }
-
     return result;
   }
 

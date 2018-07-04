@@ -37,6 +37,11 @@ Galactic Era Enhancement Suite
 
 ## Relese Notes
 
+**2018-07-03 v0.4.3**
+
+- Added task name and output quantity to hover
+- Added more console output to help debug idle planet issues
+
 **2018-07-01 v0.4.2**
 
 - Still seeing issues with idle flagging
